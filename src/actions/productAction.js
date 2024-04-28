@@ -47,7 +47,7 @@ export const getProducts =
             if (category) {
                 url = `/api/v1/products?keyword=${keyword}&category=${category}&price[gte]=${price[0]}&price[lte]=${price[1]}&ratings[gte]=${ratings}&page=${currentPage}`;
             }
-            const { data } = await axios.get(url);
+            const { data } = await axios.get(url , { withCredentials: true });
 
             dispatch({
                 type: ALL_PRODUCTS_SUCCESS,
@@ -66,7 +66,7 @@ export const getSimilarProducts = (category) => async (dispatch) => {
     try {
         dispatch({ type: ALL_PRODUCTS_REQUEST });
 
-        const { data } = await axios.get(`/api/v1/products?category=${category}`);
+        const { data } = await axios.get(`/api/v1/products?category=${category}` ,  { withCredentials: true });
 
         dispatch({
             type: ALL_PRODUCTS_SUCCESS,
@@ -85,7 +85,7 @@ export const getProductDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST });
 
-        const { data } = await axios.get(`/api/v1/product/${id}`);
+        const { data } = await axios.get(`/api/v1/product/${id}` ,  { withCredentials: true });
 
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
@@ -123,7 +123,7 @@ export const getSliderProducts = () => async (dispatch) => {
     try {
         dispatch({ type: SLIDER_PRODUCTS_REQUEST });
 
-        const { data } = await axios.get('/api/v1/products/all');
+        const { data } = await axios.get('/api/v1/products/all' ,  { withCredentials: true });
 
         dispatch({
             type: SLIDER_PRODUCTS_SUCCESS,
@@ -142,7 +142,7 @@ export const getAdminProducts = () => async (dispatch) => {
     try {
         dispatch({ type: ADMIN_PRODUCTS_REQUEST });
 
-        const { data } = await axios.get('/api/v1/admin/products');
+        const { data } = await axios.get('/api/v1/admin/products' ,  { withCredentials: true });
 
         dispatch({
             type: ADMIN_PRODUCTS_SUCCESS,
@@ -216,7 +216,7 @@ export const deleteProduct = (id) => async (dispatch) => {
 export const getAllReviews = (id) => async (dispatch) => {
     try {
         dispatch({ type: ALL_REVIEWS_REQUEST });
-        const { data } = await axios.get(`/api/v1/admin/reviews?id=${id}`);
+        const { data } = await axios.get(`/api/v1/admin/reviews?id=${id}` , { withCredentials: true });
 
         dispatch({
             type: ALL_REVIEWS_SUCCESS,

@@ -34,6 +34,8 @@ import {
 } from "../constants/productConstants";
 
 // Get All Products --- Filter/Search/Sort
+axios.defaults.baseURL = process.env.REACT_APP_BACKEND_URL;
+
 export const getProducts =
     (keyword = "", category, price = [0, 200000], ratings = 0, currentPage = 1) => async (dispatch) => {
         try {
